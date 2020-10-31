@@ -52,7 +52,7 @@ const arrayId = [];
             {
                 type: "input",
                 name: "managerName",
-                message: "What is your manager's name",
+                message: "What is your manager's name?",
                 validate: answer => {
                     if(answer !== "") {
                         return true
@@ -93,7 +93,7 @@ const arrayId = [];
             {
                 type: "input",
                 name: "managerOfficeNumber",
-                message: "What is your manager's office bumber?",
+                message: "What is your manager's office number?",
                 validate: answer => {
                     if(answer !== "") {
                         return true
@@ -116,7 +116,7 @@ const arrayId = [];
             {
                 type: "input",
                 name: "internName",
-                message: "What is your intern's name",
+                message: "What is your intern's name?",
                 validate: answer => {
                     if(answer !== "") {
                         return true
@@ -181,7 +181,7 @@ const arrayId = [];
             {
                 type: "input",
                 name: "engineerName",
-                message: "What is your engineer's name",
+                message: "What is your engineer's name?",
                 validate: answer => {
                     if(answer !== "") {
                         return true
