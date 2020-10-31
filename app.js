@@ -35,10 +35,10 @@ const arrayId = [];
                  createEngineer()
                   break;
                 case "Manager":
-                  // code block
+                 createManager()
                   break;
                 case "Intern":
-                    // code block
+                 createIntern()
                     break;  
                 default:
                   buildTeam()
@@ -48,8 +48,69 @@ const arrayId = [];
 
 
     function createManager(){
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "managerName",
+                message: "What is your manager's name",
+                validate: answer => {
+                    if(answer !== "") {
+                        return true
+                    }
 
+                    return "Please enter a valid name"
+                }
+            },
+            {
+                type: "input",
+                name: "managerId",
+                message: "What is your manager's ID?",
+                validate: answer => {
+                    const pass = answer.match(/^[1-9]\d*$/);
+
+                    // console.log(pass);
+
+                    if(pass) {
+                        return true
+                    }
+
+                    return "Please enter a valid ID"
+                }
+            },
+            {
+                type: "input",
+                name: "managerEmail",
+                message: "What is your manager's email?",
+                validate: answer => {
+                    const pass = answer.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+                    if(pass) {
+                        return true
+                    }
+
+                    return "Please enter a valid email"
+                }
+            },
+            {
+                type: "input",
+                name: "managerOfficeNumber",
+                message: "What is your manager's office bumber?",
+                validate: answer => {
+                    if(answer !== "") {
+                        return true
+                    }
+
+                    return "Please enter a valid school"
+                }
+            }
+        ]).then(answers => {
+            const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber)
+            teamMembers.push(manager)
+            arrayId.push(answers.managerId)
+            createTeam();
+            // run a function here that creates the entire "team" prompting you to create another employee
+        })
     };
+    
     function createIntern() {
         inquirer.prompt([
             {
@@ -69,7 +130,11 @@ const arrayId = [];
                 name: "internId",
                 message: "What is your intern's ID?",
                 validate: answer => {
-                    if(answer !== "") {
+                    const pass = answer.match(/^[1-9]\d*$/);
+
+                    // console.log(pass);
+
+                    if(pass) {
                         return true
                     }
 
@@ -81,7 +146,8 @@ const arrayId = [];
                 name: "internEmail",
                 message: "What is your intern's email?",
                 validate: answer => {
-                    if(answer !== "") {
+                    const pass = answer.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+                    if(pass) {
                         return true
                     }
 
@@ -104,6 +170,7 @@ const arrayId = [];
             const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
             teamMembers.push(intern)
             arrayId.push(answers.internId)
+            createTeam();
             // run a function here that creates the entire "team" prompting you to create another employee
         })
     };
@@ -185,9 +252,6 @@ const arrayId = [];
 function appMenu() {
 
     createTeam();
-
-   
-
 
 }
 
