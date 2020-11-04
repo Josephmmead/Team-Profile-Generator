@@ -31,11 +31,11 @@ const arrayId = [];
             
         ]).then(answer => {
             switch(answer.team) {
-                case "Engineer":
-                 createEngineer()
-                  break;
                 case "Manager":
                  createManager()
+                  break;
+                case "Engineer":
+                 createEngineer()
                   break;
                 case "Intern":
                  createIntern()
@@ -46,7 +46,7 @@ const arrayId = [];
         })
     };
 
-
+// inquirer prompts to create a manager
     function createManager(){
         inquirer.prompt([
             {
@@ -110,7 +110,8 @@ const arrayId = [];
             // run a function here that creates the entire "team" prompting you to create another employee
         })
     };
-    
+   
+    // inquirer prompts to create an intern
     function createIntern() {
         inquirer.prompt([
             {
@@ -175,7 +176,7 @@ const arrayId = [];
         })
     };
     
-
+// inquirer prompts to create an engineer
     function createEngineer() {
         inquirer.prompt([
             {
@@ -239,6 +240,7 @@ const arrayId = [];
             // run a function here that creates the entire "team" prompting you to create another employee
         })
     }
+
 
     function buildTeam() {
         // Create the output directory if the output path doesn't exist
